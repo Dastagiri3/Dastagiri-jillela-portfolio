@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -60,7 +59,7 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center py-4">
             <div className="text-2xl font-bold text-blue-600">
-              DataAnalyst
+              Dastagiri Jillela
             </div>
             <div className="hidden md:flex space-x-8">
               <a href="#about" className="text-gray-700 hover:text-blue-600 transition-colors">About</a>
@@ -77,8 +76,8 @@ const Index = () => {
         <div className="max-w-7xl mx-auto text-center">
           <div className="animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
-              Data Analyst
-              <span className="text-blue-600 block">Portfolio</span>
+              Dastagiri Jillela
+              <span className="text-blue-600 block">Data Analyst Portfolio</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Transforming raw data into actionable insights through statistical analysis, 
@@ -120,7 +119,7 @@ const Index = () => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 <div className="flex items-center space-x-3">
                   <User className="text-blue-600" size={20} />
-                  <span className="text-gray-700">Alex Johnson</span>
+                  <span className="text-gray-700">Dastagiri Jillela</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="text-blue-600" size={20} />

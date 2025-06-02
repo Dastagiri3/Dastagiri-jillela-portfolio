@@ -77,7 +77,7 @@ const Index = () => {
           <div className="animate-fade-in">
             <h1 className="text-5xl md:text-7xl font-bold text-gray-900 mb-6">
               Dastagiri Jillela
-              <span className="text-blue-600 block">Data Analyst Portfolio</span>
+              <span className="text-blue-600 block">Portfolio</span>
             </h1>
             <p className="text-xl md:text-2xl text-gray-600 mb-8 max-w-3xl mx-auto">
               Transforming raw data into actionable insights through statistical analysis, 

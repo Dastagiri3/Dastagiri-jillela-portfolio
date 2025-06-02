@@ -99,33 +99,26 @@ const Index = () => {
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">About Me</h2>
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <img 
-                src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=500&h=600&fit=crop" 
-                alt="Profile" 
-                className="rounded-2xl shadow-2xl w-full max-w-md mx-auto"
-              />
-            </div>
+          <div className="max-w-4xl mx-auto">
             <div className="space-y-6">
-              <h3 className="text-3xl font-bold text-gray-900">
+              <h3 className="text-3xl font-bold text-gray-900 text-center">
                 Fresh Graduate with Passion for Data
               </h3>
-              <p className="text-lg text-gray-600 leading-relaxed">
+              <p className="text-lg text-gray-600 leading-relaxed text-center">
                 Recent graduate with a strong foundation in data analysis, statistics, and programming. 
                 Passionate about uncovering insights from complex datasets and translating them into 
                 business value.
               </p>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center space-x-3">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-center max-w-2xl mx-auto">
+                <div className="flex items-center justify-center space-x-3">
                   <User className="text-blue-600" size={20} />
                   <span className="text-gray-700">Dastagiri Jillela</span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center justify-center space-x-3">
                   <MapPin className="text-blue-600" size={20} />
                   <span className="text-gray-700">Hyderabad, India</span>
                 </div>
-                <div className="flex items-center space-x-3">
+                <div className="flex items-center justify-center space-x-3">
                   <Mail className="text-blue-600" size={20} />
                   <span className="text-gray-700">gurudastagiri3@gmail.com</span>
                 </div>

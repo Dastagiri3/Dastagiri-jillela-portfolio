@@ -123,11 +123,11 @@ const Index = () => {
                 </div>
                 <div className="flex items-center space-x-3">
                   <MapPin className="text-blue-600" size={20} />
-                  <span className="text-gray-700">San Francisco, CA</span>
+                  <span className="text-gray-700">Hyderabad, India</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Mail className="text-blue-600" size={20} />
-                  <span className="text-gray-700">alex@dataanalyst.com</span>
+                  <span className="text-gray-700">gurudastagiri3@gmail.com</span>
                 </div>
               </div>
             </div>

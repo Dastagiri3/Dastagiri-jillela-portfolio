@@ -21,9 +21,17 @@ const Index = () => {
   const projects = [
     {
       title: 'Sales Performance Dashboard',
-      description: 'Interactive Power BI dashboard analyzing quarterly sales performance across multiple regions with KPI tracking and trend analysis.',
-      tech: ['Power BI', 'SQL', 'Excel'],
-      impact: '25% improvement in sales tracking efficiency',
+      description: 'Comprehensive Power BI dashboard analyzing quarterly sales performance across 15 regions with real-time KPI tracking, trend analysis, and predictive forecasting. Features include revenue tracking, sales rep performance metrics, product category analysis, customer acquisition costs, and automated alert systems for targets missed by >10%.',
+      tech: ['Power BI', 'SQL Server', 'Excel', 'DAX', 'Power Query'],
+      impact: '25% improvement in sales tracking efficiency, 15% increase in quarterly targets achievement',
+      features: [
+        'Real-time sales data visualization',
+        'Interactive regional performance maps',
+        'Automated KPI alerts and notifications',
+        'Sales forecasting with 92% accuracy',
+        'Customer segmentation analysis',
+        'Product performance drill-down capabilities'
+      ],
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
       link: '#'
     },
@@ -190,6 +198,21 @@ const Index = () => {
                         </Badge>
                       ))}
                     </div>
+                    
+                    {project.features && (
+                      <div className="bg-blue-50 p-3 rounded-lg border border-blue-200">
+                        <h4 className="font-semibold text-blue-800 mb-2">Key Features:</h4>
+                        <ul className="text-sm text-blue-700 space-y-1">
+                          {project.features.map((feature, idx) => (
+                            <li key={idx} className="flex items-start">
+                              <span className="text-blue-500 mr-2">•</span>
+                              {feature}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    )}
+                    
                     <div className="bg-green-50 p-3 rounded-lg border border-green-200">
                       <span className="text-green-800 font-semibold">Impact: </span>
                       <span className="text-green-700">{project.impact}</span>

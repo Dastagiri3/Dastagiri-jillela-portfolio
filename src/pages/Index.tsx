@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -195,16 +196,68 @@ const Index = () => {
         <div className="max-w-7xl mx-auto">
           <h2 className="text-4xl font-bold text-center text-gray-900 mb-16">About Me</h2>
           <div className="max-w-4xl mx-auto">
-            <div className="space-y-6">
+            <div className="space-y-8">
               <h3 className="text-3xl font-bold text-gray-900 text-center">
-                Fresh Graduate with Passion for Data
+                Data Analyst & Full Stack Developer
               </h3>
-              <p className="text-lg text-gray-600 leading-relaxed text-center">
-                Recent graduate with a strong foundation in data analysis, statistics, and programming. 
-                Passionate about uncovering insights from complex datasets and translating them into 
-                business value.
-              </p>
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-center max-w-2xl mx-auto">
+              
+              <div className="text-lg text-gray-600 leading-relaxed space-y-4">
+                <p className="text-center">
+                  Passionate recent graduate with a unique blend of data analytics expertise and full-stack development skills. 
+                  I specialize in transforming complex datasets into actionable business insights while building robust, 
+                  scalable web applications to deliver these insights effectively.
+                </p>
+                
+                <div className="grid md:grid-cols-2 gap-8 mt-8">
+                  <div className="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <BarChart className="text-blue-600" size={24} />
+                      <h4 className="text-xl font-semibold text-blue-800">Data Analytics</h4>
+                    </div>
+                    <p className="text-blue-700">
+                      Expert in statistical analysis, data visualization, and machine learning. Proficient in Python, R, SQL, 
+                      and advanced tools like Power BI and Tableau. I excel at uncovering hidden patterns in data and 
+                      translating complex findings into clear, business-focused recommendations.
+                    </p>
+                  </div>
+                  
+                  <div className="bg-green-50 p-6 rounded-lg border border-green-200">
+                    <div className="flex items-center space-x-3 mb-4">
+                      <Code className="text-green-600" size={24} />
+                      <h4 className="text-xl font-semibold text-green-800">Full Stack Development</h4>
+                    </div>
+                    <p className="text-green-700">
+                      Skilled in modern web technologies including React, Node.js, and database management. I build 
+                      interactive dashboards, data visualization platforms, and end-to-end applications that make 
+                      data accessible and actionable for stakeholders at all levels.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="bg-gray-50 p-6 rounded-lg mt-6">
+                  <h4 className="text-lg font-semibold text-gray-800 mb-3">What Sets Me Apart</h4>
+                  <ul className="text-gray-700 space-y-2">
+                    <li className="flex items-start">
+                      <span className="text-blue-500 mr-2">•</span>
+                      Bridge the gap between technical analysis and business strategy
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-500 mr-2">•</span>
+                      Create custom analytical tools and automated reporting systems
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-500 mr-2">•</span>
+                      Combine statistical rigor with intuitive user experience design
+                    </li>
+                    <li className="flex items-start">
+                      <span className="text-blue-500 mr-2">•</span>
+                      Passionate about continuous learning and staying current with industry trends
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 justify-center max-w-2xl mx-auto mt-8">
                 <div className="flex items-center justify-center space-x-3">
                   <User className="text-blue-600" size={20} />
                   <span className="text-gray-700">Dastagiri Jillela</span>

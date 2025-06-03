@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -52,6 +53,15 @@ const Index = () => {
     }
   ];
 
+  const handleDownloadResume = () => {
+    const link = document.createElement('a');
+    link.href = '/lovable-uploads/10fc4b17-58e9-407a-a472-d812f517572b.png';
+    link.download = 'Dastagiri_Jillela_Resume.png';
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  };
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       {/* Navigation */}
@@ -87,7 +97,12 @@ const Index = () => {
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3">
                 View Projects
               </Button>
-              <Button variant="outline" size="lg" className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3">
+              <Button 
+                variant="outline" 
+                size="lg" 
+                className="border-blue-600 text-blue-600 hover:bg-blue-50 px-8 py-3"
+                onClick={handleDownloadResume}
+              >
                 Download Resume
               </Button>
             </div>
@@ -202,7 +217,12 @@ const Index = () => {
               <Mail className="mr-2" size={20} />
               Send Email
             </Button>
-            <Button size="lg" variant="outline" className="border-white text-white hover:bg-white hover:text-blue-600">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="border-white text-white hover:bg-white hover:text-blue-600"
+              onClick={handleDownloadResume}
+            >
               Download Resume
             </Button>
           </div>

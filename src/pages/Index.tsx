@@ -1,12 +1,15 @@
-
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Progress } from '@/components/ui/progress';
-import { Mail, MapPin, User, Code, BarChart, Database } from 'lucide-react';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle, DialogTrigger } from '@/components/ui/dialog';
+import { Mail, MapPin, User, Code, BarChart, Database, ExternalLink, Calendar, Users, Target } from 'lucide-react';
 
 const Index = () => {
+  const [selectedProject, setSelectedProject] = useState(null);
+  const [isDialogOpen, setIsDialogOpen] = useState(false);
+
   const skills = [
     { name: 'Python', level: 85, category: 'Programming' },
     { name: 'SQL', level: 90, category: 'Database' },
@@ -33,7 +36,18 @@ const Index = () => {
         'Product performance drill-down capabilities'
       ],
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
-      link: '#'
+      link: '#',
+      duration: '3 months',
+      team: '4 members',
+      client: 'Fortune 500 Retail Company',
+      challenge: 'The company was struggling with fragmented sales data across multiple regions and systems, making it difficult to track performance and identify trends in real-time.',
+      solution: 'Developed a comprehensive Power BI dashboard that consolidated data from 15 regional databases, implemented automated data refresh cycles, and created predictive models for sales forecasting.',
+      results: [
+        'Reduced report generation time from 2 days to 30 minutes',
+        'Improved sales target achievement by 15% through better visibility',
+        'Enabled data-driven decision making for 50+ sales managers',
+        'Identified underperforming regions leading to targeted interventions'
+      ]
     },
     {
       title: 'Customer Segmentation Analysis',
@@ -41,7 +55,24 @@ const Index = () => {
       tech: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib'],
       impact: 'Identified 5 key customer segments',
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
-      link: '#'
+      link: '#',
+      duration: '2 months',
+      team: '2 members',
+      client: 'E-commerce Platform',
+      challenge: 'The marketing team was using broad, untargeted campaigns that resulted in low conversion rates and high customer acquisition costs.',
+      solution: 'Applied K-means clustering algorithm on customer transaction data, demographics, and behavior patterns to identify distinct customer segments with similar characteristics.',
+      results: [
+        'Identified 5 distinct customer segments with unique behaviors',
+        'Increased email campaign conversion rates by 35%',
+        'Reduced customer acquisition cost by 20%',
+        'Enabled personalized product recommendations'
+      ],
+      features: [
+        'Automated data preprocessing pipeline',
+        'Interactive cluster visualization',
+        'Customer profile generation',
+        'Segment performance tracking'
+      ]
     },
     {
       title: 'Financial Fraud Detection',
@@ -49,7 +80,25 @@ const Index = () => {
       tech: ['Python', 'TensorFlow', 'SQL', 'Tableau'],
       impact: '94% accuracy in fraud detection',
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
-      link: '#'
+      link: '#',
+      duration: '4 months',
+      team: '3 members',
+      client: 'Financial Services Company',
+      challenge: 'Manual fraud detection was time-consuming and missed sophisticated fraud patterns, resulting in significant financial losses.',
+      solution: 'Developed an ensemble machine learning model combining isolation forests and neural networks to detect anomalous transaction patterns in real-time.',
+      results: [
+        'Achieved 94% accuracy in fraud detection',
+        'Reduced false positive rate by 40%',
+        'Prevented $2M in potential fraud losses',
+        'Decreased investigation time from hours to minutes'
+      ],
+      features: [
+        'Real-time transaction monitoring',
+        'Anomaly scoring and ranking',
+        'Automated alert system',
+        'Model performance dashboard',
+        'Historical fraud pattern analysis'
+      ]
     },
     {
       title: 'Inventory Optimization Study',
@@ -57,9 +106,32 @@ const Index = () => {
       tech: ['R', 'Excel', 'Power BI', 'Statistics'],
       impact: '15% reduction in carrying costs',
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop',
-      link: '#'
+      link: '#',
+      duration: '6 weeks',
+      team: '2 members',
+      client: 'Manufacturing Company',
+      challenge: 'High inventory carrying costs and frequent stockouts were impacting profitability and customer satisfaction.',
+      solution: 'Conducted comprehensive statistical analysis of inventory patterns, demand forecasting, and supply chain optimization to determine optimal stock levels.',
+      results: [
+        'Reduced inventory carrying costs by 15%',
+        'Decreased stockout incidents by 30%',
+        'Improved inventory turnover ratio by 25%',
+        'Optimized reorder points for 500+ SKUs'
+      ],
+      features: [
+        'Demand forecasting models',
+        'Safety stock calculations',
+        'Reorder point optimization',
+        'Inventory performance metrics',
+        'Seasonal trend analysis'
+      ]
     }
   ];
+
+  const handleViewDetails = (project) => {
+    setSelectedProject(project);
+    setIsDialogOpen(true);
+  };
 
   const handleDownloadResume = () => {
     const link = document.createElement('a');
@@ -217,9 +289,114 @@ const Index = () => {
                       <span className="text-green-800 font-semibold">Impact: </span>
                       <span className="text-green-700">{project.impact}</span>
                     </div>
-                    <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
-                      View Project Details
-                    </Button>
+                    
+                    <Dialog open={isDialogOpen && selectedProject?.title === project.title} onOpenChange={(open) => {
+                      setIsDialogOpen(open);
+                      if (!open) setSelectedProject(null);
+                    }}>
+                      <DialogTrigger asChild>
+                        <Button 
+                          variant="outline" 
+                          className="w-full border-blue-600 text-blue-600 hover:bg-blue-50"
+                          onClick={() => handleViewDetails(project)}
+                        >
+                          View Project Details
+                        </Button>
+                      </DialogTrigger>
+                      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                        {selectedProject && (
+                          <>
+                            <DialogHeader>
+                              <DialogTitle className="text-2xl font-bold text-gray-900 mb-2">
+                                {selectedProject.title}
+                              </DialogTitle>
+                              <DialogDescription className="text-gray-600 text-base">
+                                {selectedProject.description}
+                              </DialogDescription>
+                            </DialogHeader>
+                            
+                            <div className="space-y-6 mt-6">
+                              {/* Project Overview */}
+                              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                                <div className="bg-gray-50 p-4 rounded-lg">
+                                  <div className="flex items-center space-x-2 mb-2">
+                                    <Calendar className="text-blue-600" size={20} />
+                                    <span className="font-semibold">Duration</span>
+                                  </div>
+                                  <p className="text-gray-700">{selectedProject.duration}</p>
+                                </div>
+                                <div className="bg-gray-50 p-4 rounded-lg">
+                                  <div className="flex items-center space-x-2 mb-2">
+                                    <Users className="text-blue-600" size={20} />
+                                    <span className="font-semibold">Team Size</span>
+                                  </div>
+                                  <p className="text-gray-700">{selectedProject.team}</p>
+                                </div>
+                                <div className="bg-gray-50 p-4 rounded-lg">
+                                  <div className="flex items-center space-x-2 mb-2">
+                                    <Target className="text-blue-600" size={20} />
+                                    <span className="font-semibold">Client</span>
+                                  </div>
+                                  <p className="text-gray-700">{selectedProject.client}</p>
+                                </div>
+                              </div>
+
+                              {/* Challenge */}
+                              <div className="bg-red-50 p-4 rounded-lg border border-red-200">
+                                <h4 className="font-semibold text-red-800 mb-2">Challenge</h4>
+                                <p className="text-red-700">{selectedProject.challenge}</p>
+                              </div>
+
+                              {/* Solution */}
+                              <div className="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                                <h4 className="font-semibold text-blue-800 mb-2">Solution</h4>
+                                <p className="text-blue-700">{selectedProject.solution}</p>
+                              </div>
+
+                              {/* Technologies */}
+                              <div>
+                                <h4 className="font-semibold text-gray-800 mb-3">Technologies Used</h4>
+                                <div className="flex flex-wrap gap-2">
+                                  {selectedProject.tech.map((tech) => (
+                                    <Badge key={tech} variant="outline" className="text-blue-600 border-blue-600">
+                                      {tech}
+                                    </Badge>
+                                  ))}
+                                </div>
+                              </div>
+
+                              {/* Features */}
+                              {selectedProject.features && (
+                                <div>
+                                  <h4 className="font-semibold text-gray-800 mb-3">Key Features</h4>
+                                  <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                    {selectedProject.features.map((feature, idx) => (
+                                      <li key={idx} className="flex items-start">
+                                        <span className="text-blue-500 mr-2">•</span>
+                                        <span className="text-gray-700">{feature}</span>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              )}
+
+                              {/* Results */}
+                              <div className="bg-green-50 p-4 rounded-lg border border-green-200">
+                                <h4 className="font-semibold text-green-800 mb-3">Results & Impact</h4>
+                                <ul className="space-y-2">
+                                  {selectedProject.results.map((result, idx) => (
+                                    <li key={idx} className="flex items-start">
+                                      <span className="text-green-500 mr-2">✓</span>
+                                      <span className="text-green-700">{result}</span>
+                                    </li>
+                                  ))}
+                                </ul>
+                              </div>
+                            </div>
+                          </>
+                        )}
+                      </DialogContent>
+                    </Dialog>
                   </div>
                 </CardContent>
               </Card>

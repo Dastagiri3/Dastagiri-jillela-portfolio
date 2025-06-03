@@ -13,7 +13,7 @@ const Index = () => {
     { name: 'Excel', level: 95, category: 'Tools' },
     { name: 'Power BI', level: 80, category: 'Visualization' },
     { name: 'Tableau', level: 75, category: 'Visualization' },
-    { name: 'R', level: 70, category: 'Programming' },
+    { name: 'R', level: 50, category: 'Programming' },
     { name: 'Statistics', level: 85, category: 'Analytics' },
     { name: 'Machine Learning', level: 75, category: 'Analytics' },
   ];

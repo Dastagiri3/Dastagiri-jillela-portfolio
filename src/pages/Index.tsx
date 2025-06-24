@@ -48,7 +48,44 @@ const Index = () => {
         'Improved sales target achievement by 15% through better visibility',
         'Enabled data-driven decision making for 50+ sales managers',
         'Identified underperforming regions leading to targeted interventions'
-      ]
+      ],
+      codeDetails: {
+        architecture: 'Multi-layered ETL architecture with automated data pipelines',
+        keyImplementations: [
+          'DAX calculations for complex KPI metrics',
+          'Power Query M language for data transformation',
+          'SQL stored procedures for data aggregation',
+          'Automated refresh schedules using Power BI Gateway'
+        ],
+        codeSnippets: [
+          {
+            title: 'Sales Growth DAX Formula',
+            language: 'DAX',
+            code: `Sales Growth % = 
+DIVIDE(
+    [Current Period Sales] - [Previous Period Sales],
+    [Previous Period Sales],
+    0
+) * 100`
+          },
+          {
+            title: 'Regional Sales SQL Query',
+            language: 'SQL',
+            code: `SELECT 
+    r.RegionName,
+    SUM(s.SalesAmount) as TotalSales,
+    COUNT(DISTINCT s.SalesRepID) as ActiveReps,
+    AVG(s.SalesAmount) as AvgSaleValue
+FROM Sales s
+JOIN Regions r ON s.RegionID = r.RegionID
+WHERE s.SaleDate >= DATEADD(quarter, -1, GETDATE())
+GROUP BY r.RegionName
+ORDER BY TotalSales DESC`
+          }
+        ],
+        dataFlow: 'SQL Server → Power Query → DAX Modeling → Power BI Visualizations',
+        integrations: ['SQL Server Database', 'Excel Files', 'SharePoint Lists', 'REST APIs']
+      }
     },
     {
       title: 'Customer Segmentation Analysis',
@@ -73,7 +110,64 @@ const Index = () => {
         'Interactive cluster visualization',
         'Customer profile generation',
         'Segment performance tracking'
-      ]
+      ],
+      codeDetails: {
+        architecture: 'Python-based data science pipeline with automated preprocessing and model training',
+        keyImplementations: [
+          'Data preprocessing with Pandas and NumPy',
+          'K-means clustering with Scikit-learn',
+          'Feature engineering and scaling',
+          'Interactive visualizations with Matplotlib and Seaborn'
+        ],
+        codeSnippets: [
+          {
+            title: 'Customer Segmentation Pipeline',
+            language: 'Python',
+            code: `import pandas as pd
+from sklearn.cluster import KMeans
+from sklearn.preprocessing import StandardScaler
+import matplotlib.pyplot as plt
+
+# Load and preprocess data
+df = pd.read_csv('customer_data.csv')
+features = ['age', 'annual_income', 'spending_score', 'frequency']
+X = df[features]
+
+# Scale features
+scaler = StandardScaler()
+X_scaled = scaler.fit_transform(X)
+
+# Apply K-means clustering
+kmeans = KMeans(n_clusters=5, random_state=42)
+clusters = kmeans.fit_predict(X_scaled)
+
+# Add cluster labels to dataframe
+df['cluster'] = clusters`
+          },
+          {
+            title: 'Optimal Clusters Analysis',
+            language: 'Python',
+            code: `# Elbow method for optimal cluster selection
+inertias = []
+K_range = range(1, 11)
+
+for k in K_range:
+    kmeans = KMeans(n_clusters=k, random_state=42)
+    kmeans.fit(X_scaled)
+    inertias.append(kmeans.inertia_)
+
+# Plot elbow curve
+plt.figure(figsize=(10, 6))
+plt.plot(K_range, inertias, 'bo-')
+plt.xlabel('Number of Clusters (k)')
+plt.ylabel('Inertia')
+plt.title('Elbow Method for Optimal k')
+plt.show()`
+          }
+        ],
+        dataFlow: 'Raw Customer Data → Preprocessing → Feature Engineering → K-means Clustering → Segment Analysis',
+        integrations: ['PostgreSQL Database', 'Customer CRM System', 'Email Marketing Platform']
+      }
     },
     {
       title: 'Financial Fraud Detection',
@@ -99,7 +193,89 @@ const Index = () => {
         'Automated alert system',
         'Model performance dashboard',
         'Historical fraud pattern analysis'
-      ]
+      ],
+      codeDetails: {
+        architecture: 'Ensemble ML model with real-time streaming data processing and automated alerting system',
+        keyImplementations: [
+          'Isolation Forest for anomaly detection',
+          'Neural Network for pattern recognition',
+          'Real-time data streaming with Apache Kafka',
+          'Model ensemble and voting mechanisms'
+        ],
+        codeSnippets: [
+          {
+            title: 'Fraud Detection Model',
+            language: 'Python',
+            code: `import tensorflow as tf
+from sklearn.ensemble import IsolationForest
+from sklearn.neural_network import MLPClassifier
+import numpy as np
+
+class FraudDetector:
+    def __init__(self):
+        self.isolation_forest = IsolationForest(
+            contamination=0.1, 
+            random_state=42
+        )
+        self.neural_network = MLPClassifier(
+            hidden_layer_sizes=(100, 50),
+            activation='relu',
+            solver='adam',
+            max_iter=500
+        )
+    
+    def train(self, X_train, y_train):
+        # Train isolation forest for anomaly detection
+        self.isolation_forest.fit(X_train)
+        
+        # Train neural network for classification
+        self.neural_network.fit(X_train, y_train)
+    
+    def predict(self, X):
+        # Get anomaly scores
+        anomaly_scores = self.isolation_forest.decision_function(X)
+        
+        # Get neural network predictions
+        nn_predictions = self.neural_network.predict_proba(X)[:, 1]
+        
+        # Ensemble prediction
+        ensemble_score = (anomaly_scores + nn_predictions) / 2
+        return ensemble_score > 0.5`
+          },
+          {
+            title: 'Real-time Transaction Processing',
+            language: 'Python',
+            code: `from kafka import KafkaConsumer
+import json
+import logging
+
+def process_transaction_stream():
+    consumer = KafkaConsumer(
+        'transactions',
+        bootstrap_servers=['localhost:9092'],
+        value_deserializer=lambda x: json.loads(x.decode('utf-8'))
+    )
+    
+    for message in consumer:
+        transaction = message.value
+        
+        # Extract features
+        features = extract_features(transaction)
+        
+        # Get fraud prediction
+        fraud_probability = fraud_detector.predict([features])[0]
+        
+        # Alert if high risk
+        if fraud_probability > 0.8:
+            send_fraud_alert(transaction, fraud_probability)
+            
+        # Log transaction
+        log_transaction(transaction, fraud_probability)`
+          }
+        ],
+        dataFlow: 'Transaction Stream → Feature Engineering → ML Model → Risk Scoring → Alert System',
+        integrations: ['Apache Kafka', 'PostgreSQL', 'Elasticsearch', 'Tableau', 'Email/SMS Alerts']
+      }
     },
     {
       title: 'Inventory Optimization Study',
@@ -125,7 +301,66 @@ const Index = () => {
         'Reorder point optimization',
         'Inventory performance metrics',
         'Seasonal trend analysis'
-      ]
+      ],
+      codeDetails: {
+        architecture: 'Statistical modeling framework with R for analysis and Power BI for visualization',
+        keyImplementations: [
+          'Time series analysis for demand forecasting',
+          'Monte Carlo simulation for safety stock',
+          'ABC analysis for inventory classification',
+          'Economic Order Quantity (EOQ) optimization'
+        ],
+        codeSnippets: [
+          {
+            title: 'Demand Forecasting with ARIMA',
+            language: 'R',
+            code: `library(forecast)
+library(dplyr)
+
+# Load and prepare data
+inventory_data <- read.csv("inventory_history.csv")
+ts_data <- ts(inventory_data$demand, frequency = 12)
+
+# Fit ARIMA model
+arima_model <- auto.arima(ts_data)
+
+# Generate forecasts
+forecast_values <- forecast(arima_model, h = 12)
+
+# Calculate forecast accuracy
+accuracy_metrics <- accuracy(arima_model)
+print(accuracy_metrics)`
+          },
+          {
+            title: 'Safety Stock Calculation',
+            language: 'R',
+            code: `# Safety stock calculation function
+calculate_safety_stock <- function(lead_time, demand_std, service_level) {
+  # Z-score for service level
+  z_score <- qnorm(service_level)
+  
+  # Safety stock formula
+  safety_stock <- z_score * demand_std * sqrt(lead_time)
+  
+  return(safety_stock)
+}
+
+# Apply to all SKUs
+inventory_optimized <- inventory_data %>%
+  mutate(
+    safety_stock = calculate_safety_stock(
+      lead_time_days, 
+      demand_std_dev, 
+      0.95  # 95% service level
+    ),
+    reorder_point = lead_time_demand + safety_stock,
+    optimal_order_qty = sqrt(2 * annual_demand * order_cost / holding_cost)
+  )`
+          }
+        ],
+        dataFlow: 'Historical Data → Statistical Analysis → Forecasting Models → Optimization → Recommendations',
+        integrations: ['ERP System', 'Warehouse Management System', 'Power BI Dashboard']
+      }
     }
   ];
 
@@ -356,7 +591,7 @@ const Index = () => {
                           View Project Details
                         </Button>
                       </DialogTrigger>
-                      <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                      <DialogContent className="max-w-6xl max-h-[90vh] overflow-y-auto">
                         {selectedProject && (
                           <>
                             <DialogHeader>
@@ -405,6 +640,75 @@ const Index = () => {
                                 <h4 className="font-semibold text-blue-800 mb-2">Solution</h4>
                                 <p className="text-blue-700">{selectedProject.solution}</p>
                               </div>
+
+                              {/* Code Details Section */}
+                              {selectedProject.codeDetails && (
+                                <div className="bg-slate-50 p-6 rounded-lg border border-slate-200">
+                                  <div className="flex items-center space-x-2 mb-4">
+                                    <Code className="text-slate-600" size={24} />
+                                    <h4 className="font-bold text-slate-800 text-lg">Technical Implementation</h4>
+                                  </div>
+                                  
+                                  <div className="space-y-4">
+                                    {/* Architecture */}
+                                    <div>
+                                      <h5 className="font-semibold text-slate-700 mb-2">Architecture</h5>
+                                      <p className="text-slate-600">{selectedProject.codeDetails.architecture}</p>
+                                    </div>
+
+                                    {/* Key Implementations */}
+                                    <div>
+                                      <h5 className="font-semibold text-slate-700 mb-2">Key Implementations</h5>
+                                      <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                                        {selectedProject.codeDetails.keyImplementations.map((impl, idx) => (
+                                          <li key={idx} className="flex items-start">
+                                            <span className="text-blue-500 mr-2">•</span>
+                                            <span className="text-slate-600">{impl}</span>
+                                          </li>
+                                        ))}
+                                      </ul>
+                                    </div>
+
+                                    {/* Code Snippets */}
+                                    <div>
+                                      <h5 className="font-semibold text-slate-700 mb-3">Code Snippets</h5>
+                                      <div className="space-y-4">
+                                        {selectedProject.codeDetails.codeSnippets.map((snippet, idx) => (
+                                          <div key={idx} className="bg-gray-900 rounded-lg overflow-hidden">
+                                            <div className="bg-gray-800 px-4 py-2 flex items-center justify-between">
+                                              <span className="text-gray-300 font-medium">{snippet.title}</span>
+                                              <span className="text-gray-400 text-sm">{snippet.language}</span>
+                                            </div>
+                                            <pre className="p-4 text-sm text-gray-300 overflow-x-auto">
+                                              <code>{snippet.code}</code>
+                                            </pre>
+                                          </div>
+                                        ))}
+                                      </div>
+                                    </div>
+
+                                    {/* Data Flow */}
+                                    <div>
+                                      <h5 className="font-semibold text-slate-700 mb-2">Data Flow</h5>
+                                      <div className="bg-white p-3 rounded border border-slate-300">
+                                        <p className="text-slate-600 font-mono text-sm">{selectedProject.codeDetails.dataFlow}</p>
+                                      </div>
+                                    </div>
+
+                                    {/* Integrations */}
+                                    <div>
+                                      <h5 className="font-semibold text-slate-700 mb-2">System Integrations</h5>
+                                      <div className="flex flex-wrap gap-2">
+                                        {selectedProject.codeDetails.integrations.map((integration, idx) => (
+                                          <Badge key={idx} variant="secondary" className="text-slate-600">
+                                            {integration}
+                                          </Badge>
+                                        ))}
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              )}
 
                               {/* Technologies */}
                               <div>

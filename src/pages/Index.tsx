@@ -28,6 +28,13 @@ const Index = () => {
       description: 'Comprehensive Power BI dashboard analyzing quarterly sales performance across 15 regions with real-time KPI tracking, trend analysis, and predictive forecasting. Features include revenue tracking, sales rep performance metrics, product category analysis, customer acquisition costs, and automated alert systems for targets missed by >10%.',
       tech: ['Power BI', 'SQL Server', 'Excel', 'DAX', 'Power Query'],
       impact: '25% improvement in sales tracking efficiency, 15% increase in quarterly targets achievement',
+      keyPoints: [
+        'Built comprehensive Power BI dashboard tracking sales across 15 regions',
+        'Implemented real-time KPI monitoring with automated alert systems',
+        'Achieved 25% improvement in sales tracking efficiency',
+        'Created predictive forecasting models with 92% accuracy',
+        'Reduced report generation time from 2 days to 30 minutes'
+      ],
       features: [
         'Real-time sales data visualization',
         'Interactive regional performance maps',
@@ -92,6 +99,13 @@ ORDER BY TotalSales DESC`
       description: 'Python-based customer segmentation using K-means clustering to identify distinct customer groups for targeted marketing strategies.',
       tech: ['Python', 'Pandas', 'Scikit-learn', 'Matplotlib'],
       impact: 'Identified 5 key customer segments',
+      keyPoints: [
+        'Developed K-means clustering algorithm for customer segmentation',
+        'Processed large datasets using Python, Pandas, and Scikit-learn',
+        'Identified 5 distinct customer segments with unique behaviors',
+        'Increased email campaign conversion rates by 35%',
+        'Reduced customer acquisition cost by 20%'
+      ],
       image: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=400&h=300&fit=crop',
       link: '#',
       duration: '2 months',
@@ -174,6 +188,13 @@ plt.show()`
       description: 'Machine learning model to detect fraudulent transactions using anomaly detection techniques with 94% accuracy rate.',
       tech: ['Python', 'TensorFlow', 'SQL', 'Tableau'],
       impact: '94% accuracy in fraud detection',
+      keyPoints: [
+        'Built ensemble ML model combining isolation forests and neural networks',
+        'Achieved 94% accuracy in real-time fraud detection',
+        'Implemented streaming data processing with Apache Kafka',
+        'Prevented $2M in potential fraud losses',
+        'Reduced false positive rate by 40%'
+      ],
       image: 'https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=400&h=300&fit=crop',
       link: '#',
       duration: '4 months',
@@ -282,6 +303,13 @@ def process_transaction_stream():
       description: 'Statistical analysis of inventory patterns to optimize stock levels and reduce carrying costs by 15% while maintaining service levels.',
       tech: ['R', 'Excel', 'Power BI', 'Statistics'],
       impact: '15% reduction in carrying costs',
+      keyPoints: [
+        'Conducted statistical analysis using R for inventory optimization',
+        'Applied ARIMA models for demand forecasting',
+        'Reduced inventory carrying costs by 15%',
+        'Optimized reorder points for 500+ SKUs',
+        'Decreased stockout incidents by 30%'
+      ],
       image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=400&h=300&fit=crop',
       link: '#',
       duration: '6 weeks',
